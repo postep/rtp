@@ -5,49 +5,16 @@
 \usepackage[T1]{fontenc}
 \usepackage[mediumspace,mediumqspace,Grey,squaren]{SIunits}
 \usepackage{graphicx}
-\usepackage{listings}
-\usepackage{color}
 \usepackage[backend=biber]{biblatex}
 \usepackage{filecontents}
 \bibliography{\addbibresource{bibliography.bib}}
 
 
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
-
-\lstset{ %
-	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
-	basicstyle=\footnotesize,        % the size of the fonts that are used for the code
-	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
-	breaklines=true,                 % sets automatic line breaking
-	captionpos=b,                    % sets the caption-position to bottom
-	commentstyle=\color{mygreen},    % comment style
-	deletekeywords={...},            % if you want to delete keywords from the given language
-	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
-	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
-	frame=single,	                   % adds a frame around the code
-	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-	keywordstyle=\color{blue},       % keyword style
-	language=Octave,                 % the language of the code
-	morekeywords={*,...},           % if you want to add more keywords to the set
-	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
-	numbersep=5pt,                   % how far the line-numbers are from the code
-	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
-	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
-	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-	showstringspaces=false,          % underline spaces within strings only
-	showtabs=false,                  % show tabs within strings adding particular underscores
-	stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
-	stringstyle=\color{mymauve},     % string literal style
-	tabsize=2,	                   % sets default tabsize to 2 spaces
-	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
-}
 
 \graphicspath{ {images/} }
 
 \begin{document}
-\title{Interfejs mózg-komputer}   
+\title{Interfejsy wymiany danych czasu rzeczywistego}   
 \author{Jakub Postępski} 
 \date{\today} 
 
@@ -56,360 +23,129 @@
 
 \section{Wstęp}
 \frame{
-	\frametitle{Zastosowanie}
+	\frametitle{Definicja i zastosowanie}
 	
 	\begin{itemize}
-		\item Sterowanie robotami
-		\item Egzoszkielety
-		\item Komunikacja
-		\item Przekazywanie sygnałów z komputera i czujników do mózgu
-		\item Obejście problemu uszkodzonych nerwów
-		\item Rehabilitacja
-		\item Diagnostyka medyczna
-		\item Wariografy
-		\item Rozrywka
-		\item Biofeedback
+		\item 
 	\end{itemize}
 }
 
 \frame{
-	\frametitle{Historia} 
-	
+	\frametitle{Systemy operacyjne czasu rzeczywistego}
+}
+
+\frame{
+	\frametitle{Budowa ogólna}
 	\begin{itemize}
-		\item 1924 - Hans Berger - rejestracja fal alfa, przewody pod czaszką
-		\item 1987 - Odkrycie sygnału neuronowego
-		\item 1998 - Philip Kennedy i  Roy Bakay - pierwszy dobrej jakości implant mózgu u człowieka		
-		\item 1999 - Yang Dan - zdekodowanie sygnału odpowiedzialnego za widzenie przez kota
-		\item 1999 - Pierwsze małpy sterują ramieniem robota
-		\item 2002 - Ślepy facet kieruje na dwójce		
-		\item 2005 - Człowiek steruje sztuczną ręką
-		\item 2008 - Zdekodowano wizję człowieka w miarę dobrej jakości
-		\item 2015 - Połączono mózgi trzech rezusów
+		\item Fizyczne urządzenia i magistrale
+		\item Algorytmy transportu danych
+		\item Sterownik systemu operacyjnego
+		\item Aplikacja
 	\end{itemize}
 }
 
+
+\section{Warstwa fizyczna}
 \frame{
-	\frametitle{Widzenie kota}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.7\textwidth]{catvision1}
-	\end{figure}
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.7\textwidth]{catvision3}
-	\end{figure}
+	\frametitle{Ośrodki transmisji}
+}
+
+\subsection{Przewodowe}
+\frame{
+	\frametitle{Linia z otwartym kolektorem / drenem}
+}
+\frame{
+	\frametitle{Para różnicowa}
+}
+\frame{
+	\frametitle{Magistrale szeregowe i równoległe}
+}
+
+\subsection{Światłowody}
+\frame{
+	\frametitle{Światłowody wielomodowe}
 }
 
 \frame{
-	\includegraphics[width=\textwidth]{ramie}
+	\frametitle{Światłowody jednomodowe}
 }
 
-\section{Budowa mózgu}
+\subsection{Bezprzewodowe}
 \frame{
-	\frametitle{Mózg}
-	Podstawową komórką generującą prąd jest neuron.
-	\begin{itemize}
-		\item\textbf{Płat czołowy }kora motoryczna, decyzje o działaniu, kora ruchowa, kora przedruchowa
-		\item\textbf{Płat skroniowy }słuch, węch
-		\item\textbf{Płat ciemieniowy } temperatura, czucie, ból, napięcia mięśni, 
-		\item\textbf{Płat potyliczny }widzenie i skojarzenia z nim związane, przestrzeń
-		\item\textbf{Móżdżek }koordynacja ruchowa, utrzymanie równowagi
-		\item\textbf{Pień mózgu }funkcje życiowe
-	\end{itemize}
+	\frametitle{Mechanizm wykrywania kolizji}
+}
+
+\subsection{Ralizacje przewodowe}
+
+\frame{
+	\frametitle{CAN}
 }
 
 \frame{
-	\frametitle{Neuron}
-	\includegraphics[scale=0.3]{neuron}
+	\frametitle{USB}
 }
 
 \frame{
-	\begin{figure}[h]
-		\centering
-		\includegraphics[scale=0.6]{mozg3}
-	\end{figure}
-}
-
-\frame{
-	\frametitle{Dodatki do mózgu}
-	
-	\begin{itemize}
-		\item\textbf{Komórki glejowe} Utrzymują neurony
-		\item\textbf{Opona pierwsza }Odżywianie mózgu
-		\item\textbf{Opona druga }W niej znajduje się płyn mózgowo-rdzeniowy, wyrównuje ciśnienie w czaszce i amortyzuje wstrząsy
-		\item\textbf{Opona trzecia i czaszka }Ochrona
-	\end{itemize}
-}
-
-\frame{
-	\frametitle{Fale mózgowe}
-	Fale mózgowe, wyglądają inaczej dla ludzi w róznym wieku, poziomie wykształcenia i płci
-	\begin{itemize}
-		\item\textbf{Delta: }1-4Hz, rejestrowane podczas snu, ew podczas intensywnego wysiłku umysłowego\linebreak
-		\includegraphics[scale=0.3]{faledelta}
-		\item\textbf{Theta: }4-7Hz, medytacja, hipnoza, marzenie, emocje, ból
-		\includegraphics[scale=0.3]{faletheta}
-	\end{itemize}
-}
-
-\frame{
-	\frametitle{Fale mózgowe}
-	\begin{itemize}
-		\item\textbf{Alfa: }7-13Hz, pochodzą głównie z płatów potylicznych, stan czuwania, stan relaksu\linebreak	
-		\includegraphics[scale=0.3]{falealfa}	
-		\item\textbf{Beta: }12-28Hz, gotowość, zwyczajna codzienna aktywność, percepcja zmysłowa, głównie w okolicach potylicznych
-		\includegraphics[scale=0.3]{falebeta}	
-		\item\textbf{Gamma: }30-70Hz, procesy poznawcze, pamięć, wiązanie wielu różnych bodźców zmysłowych
-	\end{itemize}
-}
-
-\section{Urządzenia wykorzystywane do BCI}
-\frame{
-	\frametitle{BCI inwazyjne}
-	Urządzenia inwazyjne są wszczepiane bezpośrednio do mózgu pacjenta
-	\begin{itemize}
-		\item Dobra dokładność pomiarów
-		\item Lepsza możliwość stymulacji
-		\item Duże ryzyko powikłań
-	\end{itemize}
-}
-
-\frame{
-	\frametitle{BCI nieinwazyjne}
-	Urządzenia nieinwazyjne nie wymagają żadnych operacji. Urządzenia częściowo inwazyjne wymagają operacji, jednak elektrody kładzione są na mózgu pacjenta, bądź sklepieniu czaszki.
-	\begin{itemize}
-		\item Gorsze pomiary, duże zakłócenia w EEG
-		\item Praktycznie brak możliwości stymulacji
-		\item Małe koszty
-		\item Nie ma potrzeby zapewnienia pomocy medycznej
-		\item Wymagane szkolenia
-	\end{itemize}
-}
-\frame{
-	\frametitle{Implant ślimakowy}
-	Wszczepiany dzieciom i dorosłym z głuchotą lub głębokim niedosłuchem.
-	\begin{figure}[h]
-		\includegraphics[width=0.8\textwidth]{Cochearimplants}
-	\end{figure}
-	
-}
-\frame{
-	\begin{figure}
-		\includegraphics[width=0.8\textwidth]{cochlearimplant}
-	\end{figure}
-}
-
-\frame{
-	\frametitle{MEG - Magnetoencefalografia}
-	\begin{itemize}
-		\item Rejestruje pole magnetyczne wytwarzane przez mózg
-		\item Wykorzystywane do określenia funkcji poszczególnych częsci mózgu
-		\item Potrzeba ok 50000 neuronów, aby sygnał był mierzalny
-	\end{itemize}
-}
-
-\frame{
-	\frametitle{fMRI - Funkcjonalny Rezonans Magnetyczny}
-	\begin{itemize}
-		\item Mierzymy zmiany przepływu krwi i utlenowania aktywnej okolicy mózgu.
-		\item Mózg umieszczamy w polu magnetycznym o równoległych liniach pola, i atakujemy go impulsami magnetycznymi o określonej częstotliwości
-		\item Impulsy pola powodują wzbudzenie spinów protonów w jądrach wodoru
-		\item W wyniku impulsów jądra atomów zostają namagnesowane i same zaczynają emitować pole magnetyczne.
-	\end{itemize}
-}
-
-\frame{
-	\includegraphics[width=\textwidth]{fmri}
-}
-
-\frame{
-	\frametitle{EEG - Elektroencefalograf}
-	\begin{itemize}
-		\item Mierzymy napięcia generowane przez mózg.
-		\item Mierzone sygnały mają napięcia rzędu kilkudziesięciu {\micro\volt}
-		\item Zakłócenia z otoczenia i ludzkiego ciała
-		\item Napięcie odkładające się na granicy skóry z elektrodą
-		\item Do 256 elektrod na całej czaszce
-	\end{itemize}
-}
-\frame{
-	\includegraphics[width=\textwidth]{eeg1}
-}
-
-\frame{
-	\frametitle{Elektrody}
-	\begin{itemize}
-		\item Elektrody mają swój opór i pojemność
-		\item Mamy elektrody: miseczkowe, grzybkowe, węglowe, klipsowe, igłowe
-		\item Powszechnie stosowane są elektrody mokre
-	\end{itemize}
-	\includegraphics[width=\textwidth]{elektroda1}
-}
-
-\frame{
-	\begin{figure}[h]
-		\centering
-		\includegraphics[width=0.7\textwidth]{elektroda2}
-	\end{figure}
-}
-
-\frame{
-	\frametitle{Typowe rozmieszczenie elektrod}
-	\begin{figure}[h]
-		\includegraphics[width=0.7\textwidth]{rozmieszczenie}
-	\end{figure}	
-}
-
-\frame{
-	\frametitle{Przykładowe badanie EEG}
-	\includegraphics[width=\textwidth, height=\textheight]{eeg4}
-}
-
-\section{BCI}
-\frame{
-	\frametitle{P300}
-	Test polegający na prezentowaniu rzadko występujących bodźców, przykładem jest \textit{oddball}.\linebreak
-	P3 lub P3b:
-	\begin{itemize}
-		\item Bodziec \textit{standard} często, \textit{target} rzadko
-		\item Po pojawieniu się \textit{target} mamy wychylenie napięcia na elektrodach
-		\item Aktywność głównie obszarów ciemieniowych
-	\end{itemize}
-	P3a:
-	\begin{itemize}
-		\item Dodatkowo bodziec \textit{novel}, który ma być ignorowany przez pacjenta
-		\item Również mamy aktywność, lecz przesuniętą w stronę płatów czołowych
-		\item Pojawia się minimalnie wcześniej
-	\end{itemize}
-	U osób młodszych można zaobserwować bardziej zróżnicowane rozłożenie napięć.
+	\frametitle{SPI}
 }
 
 
 \frame{
-	\frametitle{Obróbka sygnału EEG}
-	Obowiązkowo zakładamy filtr na częstotliwość 50Hz.\linebreak
-	W początkowej fazie odszumiamy sygnał:
-	\begin{itemize}
-		\item Filtry cyfrowe
-		\item Filtry przestrzenne
-		\item Separacja częstotliwości
-	\end{itemize}
-	Następnie uwidaczniamy to co nam potrzebne:
-	\begin{itemize}
-		\item Transformata Fouriera
-		\item Transformata falkowa
-		\item Statystyki wyższych rzędów
-	\end{itemize}
-	Na koniec, algorytm do wykrywania informacji:
-	\begin{itemize}
-		\item Modele autoregresyjne
-		\item Sztuczne sieci neuronowe
-		\item Liniowa analiza dyskryminacyjna
-		\item Drzewa decyzyjne
-	\end{itemize}
-	Polecam program do nagrywania EEGStudio\par
-	Polecam pakiet matlaba do obróbki EEGLab
+	\frametitle{UART}	
+}
+
+
+\frame{
+	\frametitle{RS-232}	
 }
 
 \frame{
-	\frametitle{FT vs WT}
-	Transformata Fouriera nie pozwala na pozyskanie informacji o czasie zdarzenia.
-	
-	FT:
-	\begin{itemize}
-		\item Informacje o występujących w sygnale częstotliwościach 
-		\item Jądrem są funkcje sinusoidalne
-		\item Mamy jeden podstawowy wzór
-		\item  $\hat f(\xi) = \int_{-\infty}^{\infty} f(x)e^{-2 \pi ix \xi}\, dx$
-	\end{itemize}
-	
-	WT:
-	\begin{itemize}
-		\item Informacje o występowaniu częstotliwości w czasie
-		\item Jądrem są funkcje falkowe
-		\item Mamy rodzinę wzorów
-		\item $X(a,b) = \frac{1}{\sqrt{a}}\int_{-\infty}^{\infty}\overline{\Psi\left(\frac{t - b}{a}\right)} x(t)\, dt$
-	\end{itemize}
+	\frametitle{I$^2$C}
 }
 
-\begin{frame}[fragile]
-	\frametitle{DWT}
-	\lstset{language=Java}
-	
-	\begin{lstlisting}  % Start your code-block
-	int[] output = new int[input.length];
-	
-	for (int length = input.length >> 1; ; length >>= 1){
-	for (int i = 0; i < length; ++i){
-	int sum = input[i * 2] + input[i * 2 + 1];
-	int difference = input[i * 2] - input[i * 2 + 1];
-	output[i] = sum;
-	output[length + i] = difference;
-	}
-	if (length == 1){
-	return output;
-	}
-	System.arraycopy(output, 0, input, 0, length << 1);
-	}
-	\end{lstlisting}
-\end{frame}
 
 \frame{
-	\frametitle{Efekt WT}
-	\begin{figure}
-		\includegraphics[width=0.75\textwidth]{wt}
-	\end{figure}	
+	\frametitle{Ethernet}
 }
-\subsection{Zrób to sam}
+
+\section{Warstwa transportu danych}
+
 \frame{
-	\frametitle{Jak odebrać intencje użytkownika}
-	\begin{itemize}
-		\item Wyobrażanie sobie np figur przestrzennych
-		\item Wyobrażanie sobie ruchu
-		\item Naturalne myślenie
-		\item Mruganie, ruszanie gałkami ocznymi (oszukaństwo ?)
-	\end{itemize}
-	\begin{itemize}
-		\item Dla każdego użytkownika usytuowanie elektrod może być różne.
-	\end{itemize}
+	\frametitle{Modbus}
 }
 
 \frame{
-	\frametitle{Jak zbudować własne BCI}
-	Powołując się na artykuł \textsl{Cursor Control Using EEG Signals from Eye Movement Potentials} autorstwa Granta G. Connella, wystarczy mieć tylko komputer i proste EEG.\linebreak
-	\begin{figure}[h]
-		\caption{Patrzenie w górę}
-		\centering
-		\includegraphics[width=0.8\textwidth]{lookingup}
-	\end{figure}
-	\begin{figure}[h]
-		\caption{Patrzenie w dół}
-		\centering
-		\includegraphics[width=0.8\textwidth]{lookingdown}
-	\end{figure}
+	\frametitle{CANOpen}
 }
 
 \frame{
-	\frametitle{Jak zbudować własne BCI}
-	\begin{figure}[h]
-		\caption{Patrzenie w lewo}
-		\centering
-		\includegraphics[width=0.8\textwidth]{lookingleft}
-	\end{figure}
-	\begin{figure}[h]
-		\caption{Patrzenie w prawo}
-		\centering
-		\includegraphics[width=0.8\textwidth]{lookingright}
-	\end{figure}
+	\frametitle{Ethercat}	
+}
+
+\frame{
+	\frametitle{Gigavision}	
+}
+
+
+\section{Przykłady praktyczne}
+
+\frame{
+	\frametitle{Mała szklarnia}	
+}
+
+\frame{
+	\frametitle{Serwonapęd}	
+}
+
+\frame{
+	\frametitle{Czujnik IMU}	
+}
+
+\frame{
+	\frametitle{Kontrola trakcji elektrycznej lub kolejowej}	
 }
 \frame{
-	\frametitle{Potrzebny sprzęt}
-	\begin{figure}[h]
-		\includegraphics[scale=0.2]{olimex}
-	\end{figure}
-	\begin{figure}[h]
-		\includegraphics[scale=0.3]{schema3}
-	\end{figure}
+	\frametitle{Kamera HD}	
 }
 
 \end{document}
