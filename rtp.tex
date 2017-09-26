@@ -5,17 +5,11 @@
 \usepackage[T1]{fontenc}
 \usepackage[mediumspace,mediumqspace,Grey,squaren]{SIunits}
 \usepackage{graphicx}
-\usepackage[backend=biber]{biblatex}
-\usepackage{filecontents}
-\bibliography{\addbibresource{bibliography.bib}}
-
-
-
 \graphicspath{ {images/} }
 
 \begin{document}
 \title{Interfejsy wymiany danych czasu rzeczywistego}   
-\author{Jakub Postępski} 
+\author{Arnold Postępski} 
 \date{\today} 
 
 \frame{\titlepage} 
@@ -23,10 +17,16 @@
 
 \section{Wstęp}
 \frame{
-	\frametitle{Definicja i zastosowanie}
-	
+	\frametitle{Zastosowanie}
 	\begin{itemize}
-		\item 
+		\item Telekomunikacja
+		\item Kontrola systemów infrastruktury
+		\item Automotive
+		\item Medycyna
+		\item Wojskowość
+		\item Branża chemiczna
+		\item Energetyka
+		\item Robotyka
 	\end{itemize}
 }
 
@@ -52,13 +52,30 @@
 		\item Łącza analogowe
 		\item Łącza cyfrowe
 	\end{itemize}
+}
+
+
+\frame{
+	\frametitle{Problemy z nadawaniem}
 	\begin{itemize}
-		\item Zwielokrotnianie falowe
+		\item Jeden master
+		\item Wiele masterów
 		\item Wykrywanie kolizji
+		\item Przekazywanie tokenów
 	\end{itemize}
 }
 
-\subsection{Przewodowe}
+\frame{
+	\frametitle{Transport danych}
+	\begin{itemize}
+		\item Enkapsulacja
+		\item Kompresja
+		\item Korekcja błędów
+		\item Wykrywanie błędów
+	\end{itemize}
+}
+
+
 \frame{
 	\frametitle{Linia z otwartym kolektorem / drenem}
 	
@@ -70,13 +87,13 @@
 	\frametitle{Magistrale szeregowe i równoległe}
 }
 
-\subsection{Światłowody}
 \frame{
 	\frametitle{Światłowody}
 	\begin{itemize}
 		\item Małe tłumienie
 		\item Brak zakłóceń elektromagnetycznych
 		\item Problemy z fizycznymi połączeniami
+		\item Wrażliwość na uszkodzenia
 	\end{itemize}
 	\begin{itemize}
 		\item Wielomodowe
@@ -84,10 +101,16 @@
 	\end{itemize}
 }
 
-\subsection{Bezprzewodowe}
 \frame{
-	\frametitle{Mechanizm wykrywania kolizji}
+	\frametitle{Budowa światłowodu}
+	
 }
+
+\frame{
+	\frametitle{Łączenie światłowodu}
+}
+
+
 
 \subsection{Ralizacje przewodowe}
 
@@ -142,16 +165,13 @@
 
 
 \section{Przykłady praktyczne}
-\frame{
-	\frametitle{Mała szklarnia}	
-}
 
 \frame{
 	\frametitle{Serwonapęd}	
 }
 
 \frame{
-	\frametitle{Czujnik IMU}	
+	\frametitle{Czujnik siły}	
 }
 
 \frame{
@@ -159,10 +179,13 @@
 }
 
 \frame{
-	\frametitle{Kontrola trakcji elektrycznej lub kolejowej}	
+	\frametitle{Kamera}	
 }
+
 \frame{
-	\frametitle{Kamera HD}	
+	\frametitle{Bibliografia}
+	\bibliographystyle{plain}
+	\bibliography{bibliography}
 }
 
 \end{document}
