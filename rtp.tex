@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[mediumspace,mediumqspace,Grey,squaren]{SIunits}
 \usepackage{graphicx}
+<<<<<<< HEAD
 \usepackage{filecontents}
 
 %\addbibresource{bibliography.bib}
@@ -19,6 +20,14 @@
 \bibliographystyle{plain}
 \author{Jakub Postępski} 
 \date{\today}
+=======
+\graphicspath{ {images/} }
+
+\begin{document}
+\title{Interfejsy wymiany danych czasu rzeczywistego}   
+\author{Arnold Postępski} 
+\date{\today} 
+>>>>>>> 45f894dcbba76eddcac9375af8a525818a9eeafd
 
 \frame{\titlepage} 
 
@@ -26,6 +35,7 @@
 \section{Wstęp}
 
 \frame{
+<<<<<<< HEAD
 	\frametitle{Systemy czasu rzeczywistego}
 	Urządzenie techniczne, którego wynik i efekt działania jest zależny od chwili wypracowania tego wyniku. \cite{wiki:RTC}\\
 	\vspace{1in}
@@ -34,6 +44,18 @@
 		\item Twarde
 		\item Sztywne
 		\item Miękkie
+=======
+	\frametitle{Zastosowanie}
+	\begin{itemize}
+		\item Telekomunikacja
+		\item Kontrola systemów infrastruktury
+		\item Automotive
+		\item Medycyna
+		\item Wojskowość
+		\item Branża chemiczna
+		\item Energetyka
+		\item Robotyka
+>>>>>>> 45f894dcbba76eddcac9375af8a525818a9eeafd
 	\end{itemize}
 }
 
@@ -62,6 +84,7 @@
 	\end{itemize}
 }
 
+<<<<<<< HEAD
 \frame{
 	\frametitle{Rodzaje łącz}
 	\begin{itemize}
@@ -75,6 +98,30 @@
 	\end{itemize}
 }
 
+=======
+
+\frame{
+	\frametitle{Problemy z nadawaniem}
+	\begin{itemize}
+		\item Jeden master
+		\item Wiele masterów
+		\item Wykrywanie kolizji
+		\item Przekazywanie tokenów
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Transport danych}
+	\begin{itemize}
+		\item Enkapsulacja
+		\item Kompresja
+		\item Korekcja błędów
+		\item Wykrywanie błędów
+	\end{itemize}
+}
+
+
+>>>>>>> 45f894dcbba76eddcac9375af8a525818a9eeafd
 \frame{
 	\frametitle{Otwarty kolektor}
 	\begin{figure}
@@ -97,13 +144,13 @@
 	\frametitle{Magistrale szeregowe i równoległe}
 }
 
-\subsection{Światłowody}
 \frame{
 	\frametitle{Światłowody}
 	\begin{itemize}
 		\item Małe tłumienie
 		\item Brak zakłóceń elektromagnetycznych
 		\item Problemy z fizycznymi połączeniami
+		\item Wrażliwość na uszkodzenia
 	\end{itemize}
 	\begin{itemize}
 		\item Wielomodowe
@@ -111,6 +158,21 @@
 	\end{itemize}
 }
 
+<<<<<<< HEAD
+=======
+\frame{
+	\frametitle{Budowa światłowodu}
+	
+}
+
+\frame{
+	\frametitle{Łączenie światłowodu}
+}
+
+
+
+\subsection{Ralizacje przewodowe}
+>>>>>>> 45f894dcbba76eddcac9375af8a525818a9eeafd
 
 \frame{
 	\frametitle{CAN}
@@ -173,9 +235,6 @@
 
 
 \section{Przykłady praktyczne}
-\frame{
-	\frametitle{Mała szklarnia}	
-}
 
 \frame{
 	\frametitle{Serwonapęd}	
@@ -190,10 +249,13 @@
 }
 
 \frame{
-	\frametitle{Kontrola trakcji elektrycznej lub kolejowej}	
+	\frametitle{Kamera}	
 }
+
 \frame{
-	\frametitle{Kamera HD}	
+	\frametitle{Bibliografia}
+	\bibliographystyle{plain}
+	\bibliography{bibliography}
 }
 
 \section{Podsumowanie}
