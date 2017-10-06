@@ -5,33 +5,36 @@
 \usepackage[T1]{fontenc}
 \usepackage[mediumspace,mediumqspace,Grey,squaren]{SIunits}
 \usepackage{graphicx}
-\usepackage[backend=biber]{biblatex}
 \usepackage{filecontents}
-\bibliography{\addbibresource{bibliography.bib}}
 
+%\addbibresource{bibliography.bib}
+
+%\setbeamertemplate{bibliography item}{\insertbiblabel}
 
 
 \graphicspath{ {images/} }
 
 \begin{document}
-\title{Interfejsy wymiany danych czasu rzeczywistego}   
+\title{Interfejsy wymiany danych}   
+\bibliographystyle{plain}
 \author{Jakub Postępski} 
-\date{\today} 
+\date{\today}
 
 \frame{\titlepage} 
 
 
 \section{Wstęp}
-\frame{
-	\frametitle{Definicja i zastosowanie}
-	
-	\begin{itemize}
-		\item 
-	\end{itemize}
-}
 
 \frame{
-	\frametitle{Systemy operacyjne czasu rzeczywistego}
+	\frametitle{Systemy czasu rzeczywistego}
+	Urządzenie techniczne, którego wynik i efekt działania jest zależny od chwili wypracowania tego wyniku. \cite{wiki:RTC}\\
+	\vspace{1in}
+	Systemy dzielimy na:
+	\begin{itemize}
+		\item Twarde
+		\item Sztywne
+		\item Miękkie
+	\end{itemize}
 }
 
 \frame{
@@ -47,24 +50,48 @@
 
 \section{Warstwa fizyczna}
 \frame{
-	\frametitle{Wstęp}
+	\frametitle{Przepustowośc}
+	In computing, bandwidth is the bit-rate of available or consumed information capacity expressed typically in metric multiples of bits per second. Variously, bandwidth may be characterized as network bandwidth, data bandwidth, or digital bandwidth. \cite{wiki:Przepustowosc}
+	\\Zależy od jakości ośrodka, w tym:
 	\begin{itemize}
-		\item Łącza analogowe
-		\item Łącza cyfrowe
-	\end{itemize}
-	\begin{itemize}
-		\item Zwielokrotnianie falowe
-		\item Wykrywanie kolizji
+		\item Błędy transmisji
+		\item Korekcja błędów
+		\item Enkapsulacja
+		\item Kolizje
+		\item Kompresja
 	\end{itemize}
 }
 
-\subsection{Przewodowe}
 \frame{
-	\frametitle{Linia z otwartym kolektorem / drenem}
-	
+	\frametitle{Rodzaje łącz}
+	\begin{itemize}
+		\item Analogowe
+		\item Cyfrowe
+		\item Ze zwielokrotnieniem falowym
+	\end{itemize}
+	\begin{itemize}
+		\item Szeregowe
+		\item Równoległe
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{Otwarty kolektor}
+	\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{open_collector}
+	\caption{Schemat otwartego kolekotra\cite{image:collector}}
+	\label{fig:open_collector}
+	\end{figure}
 }
 \frame{
 	\frametitle{Para różnicowa}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{differential}
+		\caption{Przykładowa realizacja pary różnicowej na PCB\cite{image:collector}}
+		\label{fig:differential}
+	\end{figure}
 }
 \frame{
 	\frametitle{Magistrale szeregowe i równoległe}
@@ -84,15 +111,10 @@
 	\end{itemize}
 }
 
-\subsection{Bezprzewodowe}
-\frame{
-	\frametitle{Mechanizm wykrywania kolizji}
-}
-
-\subsection{Ralizacje przewodowe}
 
 \frame{
 	\frametitle{CAN}
+	
 }
 
 \frame{
@@ -119,7 +141,16 @@
 
 
 \frame{
-	\frametitle{Ethernet}
+	\frametitle{Ethernet - kable miedziane}
+	\begin{itemize}
+		\item Złącze 8P8C
+		\item Topologia gwiazdy
+		\item Połaczenia proste pomiędzy switchami i komputerami
+		\item Połączenia krosowane pomiędzy dwoma switchami lub dwoma komputerami
+		\item Odległość transmisji wynosi 100 m
+		
+	\end{itemize}
+	
 }
 
 \section{Warstwa transportu danych}
@@ -151,7 +182,7 @@
 }
 
 \frame{
-	\frametitle{Czujnik IMU}	
+	\frametitle{Czujnik siły}	
 }
 
 \frame{
@@ -165,4 +196,12 @@
 	\frametitle{Kamera HD}	
 }
 
+\section{Podsumowanie}
+\frame{
+	\frametitle{Literatura}
+	\bibliography{bibliography}
+}
+
+\frame{
+	}
 \end{document}
