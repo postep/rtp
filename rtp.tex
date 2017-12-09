@@ -5,7 +5,6 @@
 \usepackage[T1]{fontenc}
 \usepackage[mediumspace,mediumqspace,Grey,squaren]{SIunits}
 \usepackage{graphicx}
-<<<<<<< HEAD
 \usepackage{filecontents}
 
 %\addbibresource{bibliography.bib}
@@ -16,18 +15,9 @@
 \graphicspath{ {images/} }
 
 \begin{document}
-\title{Interfejsy wymiany danych}   
-\bibliographystyle{plain}
-\author{Jakub Postępski} 
-\date{\today}
-=======
-\graphicspath{ {images/} }
-
-\begin{document}
-\title{Interfejsy wymiany danych czasu rzeczywistego}   
-\author{Arnold Postępski} 
+\title{Ryż mydło i powidło}   
+\author{Jakub Arnold Postępski} 
 \date{\today} 
->>>>>>> 45f894dcbba76eddcac9375af8a525818a9eeafd
 
 \frame{\titlepage} 
 
@@ -35,7 +25,7 @@
 \section{Wstęp}
 
 \frame{
-<<<<<<< HEAD
+
 	\frametitle{Systemy czasu rzeczywistego}
 	Urządzenie techniczne, którego wynik i efekt działania jest zależny od chwili wypracowania tego wyniku. \cite{wiki:RTC}\\
 	\vspace{1in}
@@ -44,8 +34,12 @@
 		\item Twarde
 		\item Sztywne
 		\item Miękkie
-=======
+	\end{itemize}
+}
+	
+\frame{
 	\frametitle{Zastosowanie}
+	Wszędzie, między innymi:
 	\begin{itemize}
 		\item Telekomunikacja
 		\item Kontrola systemów infrastruktury
@@ -55,12 +49,12 @@
 		\item Branża chemiczna
 		\item Energetyka
 		\item Robotyka
->>>>>>> 45f894dcbba76eddcac9375af8a525818a9eeafd
 	\end{itemize}
 }
 
 \frame{
 	\frametitle{Budowa ogólna}
+	Budowę można obrazować standardowym modelem ISO/OSI. W praktycznych realizacjach część z warstw jest pomijana
 	\begin{itemize}
 		\item Fizyczne urządzenia i magistrale
 		\item Algorytmy transportu danych
@@ -72,21 +66,12 @@
 
 \section{Warstwa fizyczna}
 \frame{
-	\frametitle{Przepustowośc}
-	In computing, bandwidth is the bit-rate of available or consumed information capacity expressed typically in metric multiples of bits per second. Variously, bandwidth may be characterized as network bandwidth, data bandwidth, or digital bandwidth. \cite{wiki:Przepustowosc}
-	\\Zależy od jakości ośrodka, w tym:
-	\begin{itemize}
-		\item Błędy transmisji
-		\item Korekcja błędów
-		\item Enkapsulacja
-		\item Kolizje
-		\item Kompresja
-	\end{itemize}
-}
-
-<<<<<<< HEAD
-\frame{
 	\frametitle{Rodzaje łącz}
+	\begin{itemize}
+		\item Przewodowe
+		\item Bezprzewodowe
+		\item Światłowodowe
+	\end{itemize}
 	\begin{itemize}
 		\item Analogowe
 		\item Cyfrowe
@@ -98,7 +83,23 @@
 	\end{itemize}
 }
 
-=======
+\frame{
+	\frametitle{Co chcemy łączyć?}	
+}
+
+\frame{
+	\frametitle{Przepustowość}
+	In computing, bandwidth is the bit-rate of available or consumed information capacity expressed typically in metric multiples of bits per second. Variously, bandwidth may be characterized as network bandwidth, data bandwidth, or digital bandwidth. \cite{wiki:Przepustowosc}
+	\\Zależy od jakości ośrodka, w tym:
+	\begin{itemize}
+		\item Fizycznej realizacji
+		\item Algorytmów kompresji
+		\item Algorytmów korekcji błędów
+		\item (Ilości węzłów w sieci)
+	\end{itemize}
+}
+
+
 
 \frame{
 	\frametitle{Problemy z nadawaniem}
@@ -106,22 +107,11 @@
 		\item Jeden master
 		\item Wiele masterów
 		\item Wykrywanie kolizji
-		\item Przekazywanie tokenów
-	\end{itemize}
-}
-
-\frame{
-	\frametitle{Transport danych}
-	\begin{itemize}
-		\item Enkapsulacja
-		\item Kompresja
-		\item Korekcja błędów
-		\item Wykrywanie błędów
+		\item Tokeny
 	\end{itemize}
 }
 
 
->>>>>>> 45f894dcbba76eddcac9375af8a525818a9eeafd
 \frame{
 	\frametitle{Otwarty kolektor}
 	\begin{figure}
@@ -140,9 +130,6 @@
 		\label{fig:differential}
 	\end{figure}
 }
-\frame{
-	\frametitle{Magistrale szeregowe i równoległe}
-}
 
 \frame{
 	\frametitle{Światłowody}
@@ -158,8 +145,7 @@
 	\end{itemize}
 }
 
-<<<<<<< HEAD
-=======
+
 \frame{
 	\frametitle{Budowa światłowodu}
 	
@@ -170,10 +156,17 @@
 }
 
 
+\frame{
+	\frametitle{Transport danych}
+	\begin{itemize}
+		\item Enkapsulacja
+		\item Kompresja
+		\item Korekcja błędów
+		\item Wykrywanie błędów
+	\end{itemize}
+}
 
 \subsection{Ralizacje przewodowe}
->>>>>>> 45f894dcbba76eddcac9375af8a525818a9eeafd
-
 \frame{
 	\frametitle{CAN}
 	
@@ -245,12 +238,13 @@
 }
 
 \frame{
-	\frametitle{Robot mobilny}
+	\frametitle{IRp-6}
 }
 
 \frame{
-	\frametitle{Kamera}	
+	\frametitle{Velma}	
 }
+
 
 \frame{
 	\frametitle{Bibliografia}
@@ -265,5 +259,6 @@
 }
 
 \frame{
-	}
+}
+
 \end{document}
