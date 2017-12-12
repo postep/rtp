@@ -405,6 +405,7 @@
 	NMT - Network Management
 	\begin{itemize}
 		\item Zmiana stanu urządzenia
+		\item Boot-up Message
 		\item Node guarding
 		\item Heartbeat message
 	\end{itemize}
@@ -420,6 +421,8 @@
 	\end{itemize}
 }
 
+
+
 \frame{
 	\frametitle{CANOpen}
 	
@@ -429,6 +432,18 @@
 		\caption{Stany urządzenia w sieci
 			\cite{image:canstate}}
 		\label{fig:canstate}
+	\end{figure}
+}
+
+\frame{
+	\frametitle{CANOpen}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.0\linewidth]{canopenmap}
+		\caption{Przykładowa mapa pamięci rozkazów
+			\cite{image:canstate}}
+		\label{fig:canopenmap}
 	\end{figure}
 }
 
@@ -533,12 +548,45 @@
 \frame{
 	\frametitle{Ethernet - kable miedziane}
 	\begin{itemize}
-		\item Złącze 8P8C
-		\item Topologia gwiazdy
-		\item Połaczenia proste pomiędzy switchami i komputerami
-		\item Połączenia krosowane pomiędzy dwoma switchami lub dwoma komputerami
-		\item Odległość transmisji wynosi 100 m
+		\item Złącze RJ45
+		\item 100 m
+		\item 100BASE-TX -> 100 Mbit/s
+		\item 1000BASE-T -> 1 Gbit/s
+		\item Topologia gwiazdy - sieć działa w momencie awarii poj. węzła
+		\item CSMA/CD -> sygnał JAM
+		\item Line Pulse (16 ms)
+		\item Kod 4B/5B
+		\item Skrambler
+		\item Kod NRZI
+		\item Kod MLT-3
+		\item Transformatory 1:1
 	\end{itemize}
+}
+
+\frame{\frametitle{10GBASE-T}
+	\begin{itemize}
+		\item F = 500MHz
+		\item Przesunięte pary różnicowe
+		\item Separacja par różnicowych
+		\item Kable kat. 6 (55 m) oraz 6a (100 m)
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{ethernet6}
+		\caption{Kabel skrętkowy kat. 6
+			\cite{ethernet}}
+		\label{fig:ethernet6}
+	\end{figure}
+	}
+	
+\frame{\frametitle{Ethernet - kable miedziane}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{ethernetzlacza}
+		\caption{Wtyki RJ-45
+			\cite{ethernet}}
+		\label{fig:ethernetzlacza}
+	\end{figure}
 }
 
 
@@ -546,6 +594,7 @@
 	\begin{itemize}
 		\item Half-duplex
 		\item Nie wszystkie urządzenia się widzą
+		\item CSMA/CA -> synał próbny
 	\end{itemize}}
 	\begin{itemize}
 		\item 
