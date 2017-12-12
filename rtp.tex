@@ -12,7 +12,7 @@
 %\setbeamertemplate{bibliography item}{\insertbiblabel}
 
 
-\graphicspath{ {images/} }
+\graphicspath{ {./images/} }
 
 \begin{document}
 \title{Ryż mydło i powidło}   
@@ -68,7 +68,7 @@
 	\frametitle{Co chcemy łączyć? - Urządzenia}
 		\begin{figure}
 			\centering
-			\includegraphics[width=0.99\linewidth,page=2]{motherboard}
+			\includegraphics[width=0.99\linewidth,page=2]{usb3c}
 			\caption{Schemat ideowy płyty głównej laptopa \cite{image:motherboard}}
 			\label{fig:motherboard}
 		\end{figure}
@@ -114,7 +114,12 @@
 
 \frame{
 	\frametitle{Optoizolacja}
-	
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.9\linewidth]{optoisolation}
+			\caption{Schemat transoptora\cite{image:optoisolation}}
+			\label{fig:optoisolation}
+		\end{figure}
 	}
 
 \frame{
@@ -231,7 +236,7 @@
 
 
 \frame{
-	\frametitle{Problemy z nadawaniem}
+	\frametitle{Problemy z naszym automatycznym gołąbkiem}
 	\begin{itemize}
 		\item Half duplex
 		\item Full duplex
@@ -242,14 +247,9 @@
 		\item Wiele masterów
 		\item Wykrywanie kolizji
 		\item Tokeny
+		\item Synchronizacja czasu
 	\end{itemize}
-}
-
-
-
-
-\frame{
-	\frametitle{Transport danych}
+	
 	\begin{itemize}
 		\item Enkapsulacja
 		\item Kompresja
@@ -353,14 +353,88 @@
 
 \frame{
 	\frametitle{CAN}
-	
+	Stworzona dla automotiwu, ale stosowana szerzej. Niezawodna jak PKiN.
+	\begin{itemize}
+		\item 40 m
+		\item 1 Mb/s
+		\item Równolegle połączona para różnicowa
+		\item Specjalne przewody
+		\item Rezystory terminalne 120 Ohm
+		\item 11 bitowy identyfikator w wersji 2.0A
+		\item Multimaster, adresy determinują priorytet
+		\item Synchronizacja zegarów (time quanta)
+		\item Bit stuffing
+		\item Filtrowanie wiadomości
+	\end{itemize}
+}
+
+\frame{\frametitle{CAN}
+		\begin{figure}
+			\centering
+			\includegraphics[width=1.0\linewidth]{can}
+			\caption{Ramka szyny CAN
+				\cite{image:can}}
+			\label{fig:can}
+		\end{figure}	
+	}
+\frame{
+	\frametitle{CANOpen}
+	SDO - Service Data Object:
+	\begin{itemize}
+		\item Model serwer - klient
+		\item Logiczne połączenie 1:1
+		\item Narzut protokołu
+		\item Możliwość przesyłania danych dowolnego rozmiaru
+		\item Konieczność odpowiedzi serwera (może to być błąd)
+		\item Przesyłanie w dowolnym kierunku
+	\end{itemize}
+	PDO - Process Data Object:
+	\begin{itemize}
+		\item Model producent - konsument
+		\item Logiczne połączenie 1:n
+		\item Brak narzutu protokołu
+		\item Dane długości 8 bajtów
+		\item Max. 512 PDO na jedno urządzenie
+		\item Wyzwalane zdarzeniem (asynchroniczne)
+		\item Wyzwalane wiadomością typu SYNC (synchroniczne)
+		\item TxPDO mapping i RxPDO mapping
+	\end{itemize}
 }
 \frame{
 	\frametitle{CANOpen}
+	NMT - Network Management
+	\begin{itemize}
+		\item Zmiana stanu urządzenia
+		\item Node guarding
+		\item Heartbeat message
+	\end{itemize}
+	
+	
+	LSS - Layer Setting Services (fizyczne połączenie 1:1):
+	\begin{itemize}
+		\item Przełączenie w tryb
+		\item Inquire Node-ID
+		\item Configure Node-ID
+		\item Configure Bit Timing Parameters
+		\item Powrót do trybu zwykłego
+	\end{itemize}
+}
+
+\frame{
+	\frametitle{CANOpen}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=1.0\linewidth]{canstate}
+		\caption{Stany urządzenia w sieci
+			\cite{image:canstate}}
+		\label{fig:canstate}
+	\end{figure}
 }
 
 \frame{
 	\frametitle{I$^2$C}
+	Stosowana do połączeń pojenynczych elementów elektronicznych lub płytek
 	\begin{itemize}
 		\item Połączenie równoległe
 		\item 5 Mbit/s
@@ -389,6 +463,7 @@
 
 \frame{
 	\frametitle{USB}
+	Stosowana do połączeń Plug and Play urządzeń zewnętrznych komputera.
 	\begin{itemize}
 		\item 5 m
 		\item 127 urządzeń
@@ -403,18 +478,15 @@
 	
 	\begin{itemize}
 		\item Koncentratory
-		\item Plug and Play
 		\item Bezprzewodowy USB
 	\end{itemize}
 }
 \frame{
 	\frametitle{USB}	
-	Pojedynczy host odpytuje wszystkie urządzenia cyklicznie. Urządzenia nie inicjują transmisji.\\
+	Pojedynczy host odpytuje wszystkie urządzenia cyklicznie.\\
 	Kanały:
 	\begin{itemize}
-		\item pipes
-		\item logiczne
-		\item 16 in, 16 out
+		\item pipes, logiczne, 16 in, 16 out
 		\item stream: jednokierunkowa, do przesyłu
 		\item wiadomość: dwukierunkowa, do kontroli 
 		\item huby
@@ -492,7 +564,7 @@
 \section{Przykłady praktyczne}
 
 \frame{
-	\frametitle{Serwonapęd}	
+	\frametitle{Serwonapęd}
 }
 
 \frame{
@@ -508,6 +580,8 @@
 	\frametitle{Velma}	
 }
 
+\frame{\frametitle{Za chwilę dalszy ciąg programu}
+}
 
 \frame{
 	\frametitle{Bibliografia}
@@ -515,10 +589,10 @@
 	\bibliography{bibliography}
 }
 
-\section{Podsumowanie}
-\frame{
-	\frametitle{Literatura}
-	\bibliography{bibliography}
-}
+\frame{\frametitle{Dziękuję za uwagę}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{karolina}
+	\end{figure}}
 
 \end{document}
