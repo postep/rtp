@@ -27,3 +27,4 @@
 *.bcf
 *.pdf
 *.run.xml
+!images/

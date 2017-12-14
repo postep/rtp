@@ -22,8 +22,6 @@
 \frame{\titlepage} 
 
 
-\section{Wstęp}
-
 \frame{
 
 	\frametitle{Systemy czasu rzeczywistego}
@@ -39,8 +37,7 @@
 	
 \frame{
 	\frametitle{Budowa ogólna}
-	Budowę można obrazować standardowym modelem ISO/OSI. W praktycznych realizacjach część z warstw jest pomijana
-	\begin{itemize}
+	Budowę można obrazować standardowym modelem ISO/OSI. W praktycznych realizacjach część z warstw jest mniej istotna	\begin{itemize}
 		\item Fizyczne urządzenia i magistrale
 		\item Algorytmy transportu danych
 		\item Sterownik systemu operacyjnego
@@ -68,7 +65,7 @@
 	\frametitle{Co chcemy łączyć? - Urządzenia}
 		\begin{figure}
 			\centering
-			\includegraphics[width=0.99\linewidth,page=2]{usb3c}
+			\includegraphics[width=0.99\linewidth,page=2]{motherboard}
 			\caption{Schemat ideowy płyty głównej laptopa \cite{image:motherboard}}
 			\label{fig:motherboard}
 		\end{figure}
@@ -248,13 +245,10 @@
 		\item Wykrywanie kolizji
 		\item Tokeny
 		\item Synchronizacja czasu
-	\end{itemize}
-	
-	\begin{itemize}
 		\item Enkapsulacja
 		\item Kompresja
 		\item Korekcja błędów
-		\item Obsługa kolizji
+		\item Zakłócenia elektromagnetyczne
 	\end{itemize}
 }
 
@@ -265,7 +259,9 @@
 		\item 2 urządzenia
 		\item 15 m
 		\item Wybrane prędkości: 50, 9600, 115200, 921600 bit/s 
-	\end{itemize}	
+		\item Tryb asynchroniczny
+		\item Tryb synchroniczny
+	\end{itemize}
 }
 
 \frame{
@@ -324,15 +320,12 @@
 	\frametitle{Modbus}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.9\linewidth]{modbusinstrukcje}
-		\caption{Instrukcje protokołu
+		\includegraphics[width=0.4\linewidth]{modbustypy}
+		\caption{Typy obiektów
 			\cite{image:modbus}}
-		\label{fig:modbusinstrukcje}
+		\label{fig:modbustypy}
 	\end{figure}	
-}
-
-\frame{
-	\frametitle{Modbus}
+	
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.9\linewidth]{modbusrtu}
@@ -340,14 +333,20 @@
 			\cite{image:modbus}}
 		\label{fig:modbusrtu}
 	\end{figure}	
+}
+
+
+\frame{
+	\frametitle{Modbus}
 	\begin{figure}
 		\centering
-		\includegraphics[width=0.9\linewidth]{modbusramka}
-		\caption{Instrukcje protokołu dla TCP/IP
+		\includegraphics[width=0.9\linewidth]{modbusinstrukcje}
+		\caption{Instrukcje protokołu
 			\cite{image:modbus}}
-		\label{fig:modbusramka}
+		\label{fig:modbusinstrukcje}
 	\end{figure}	
 }
+
 
 
 
@@ -440,7 +439,7 @@
 	
 	\begin{figure}
 		\centering
-		\includegraphics[width=1.0\linewidth]{canopenmap}
+		\includegraphics[width=0.7\linewidth]{canopenmap}
 		\caption{Przykładowa mapa pamięci rozkazów
 			\cite{image:canstate}}
 		\label{fig:canopenmap}
@@ -484,36 +483,18 @@
 		\item 127 urządzeń
 	\end{itemize}
 	\begin{itemize}
-		\item v2.0 -> 480Mbit/s; 100 mA
+		\item v2.0 -> 480Mbit/s; 500 mA
 		\item v3.1 Gen 2 -> 10Gbit/s; 900 mA 
 		\item USB-C; 3 A
 		\item Power Delivery USB; moc do 140 W
 		\item OMTP/GSMA
+		\item Pojedynczy host odpytuje wszystkie urządzenia cyklicznie
 	\end{itemize}
 	
 	\begin{itemize}
 		\item Koncentratory
 		\item Bezprzewodowy USB
 	\end{itemize}
-}
-\frame{
-	\frametitle{USB}	
-	Pojedynczy host odpytuje wszystkie urządzenia cyklicznie.\\
-	Kanały:
-	\begin{itemize}
-		\item pipes, logiczne, 16 in, 16 out
-		\item stream: jednokierunkowa, do przesyłu
-		\item wiadomość: dwukierunkowa, do kontroli 
-		\item huby
-	\end{itemize}
-	
-	Podłączenie:
-	\begin{itemize}
-		\item Reset
-		\item Enumeracja
-		\item Przydzielenie kanałów
-	\end{itemize}
-
 }
 
 \frame{
@@ -539,7 +520,7 @@
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.3\linewidth]{usb3c}
-		\caption{Złącza USB
+		\caption{Złącze USB C
 			\cite{image:usbconnectors}}
 		\label{fig:usb3c}
 	\end{figure}
@@ -548,21 +529,46 @@
 \frame{
 	\frametitle{Ethernet - kable miedziane}
 	\begin{itemize}
-		\item Złącze RJ45
 		\item 100 m
 		\item 100BASE-TX -> 100 Mbit/s
 		\item 1000BASE-T -> 1 Gbit/s
 		\item Topologia gwiazdy - sieć działa w momencie awarii poj. węzła
 		\item CSMA/CD -> sygnał JAM
 		\item Line Pulse (16 ms)
-		\item Kod 4B/5B
-		\item Skrambler
-		\item Kod NRZI
-		\item Kod MLT-3
-		\item Transformatory 1:1
+		\item Transformatory 1:1 (serparacja poziomu odniesienia)
+		\item Switche
+		\item Power over Ethernet -> do 60 V; do 400 mA
 	\end{itemize}
 }
 
+\frame{
+	\frametitle{Ethernet - kable miedziane}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.9\linewidth]{ethernetflow}
+			\caption{Przepływ bitów w karcie sieciowej
+				\cite{ethernet}}
+			\label{fig:ethernetflow}
+		\end{figure}
+}
+\frame{
+	\frametitle{Ethernet - kable miedziane}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\linewidth]{nrzi}
+		\caption{Kod NRZI
+			\cite{image:nrzi}}
+		\label{fig:nrzi}
+	\end{figure}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\linewidth]{mlt3}
+		\caption{Kod NRZI
+			\cite{image:mlt3}}
+		\label{fig:mlt3}
+	\end{figure}
+}
 \frame{\frametitle{10GBASE-T}
 	\begin{itemize}
 		\item F = 500MHz
@@ -592,25 +598,69 @@
 
 \frame{\frametitle{WiFi}
 	\begin{itemize}
-		\item Half-duplex
+		\item B, G, N, AC
+		\item ok. 100-200 m
+		\item 2,4 GHz lub 5,8 GHz
+		\item (Half-duplex)
 		\item Nie wszystkie urządzenia się widzą
 		\item CSMA/CA -> synał próbny
-	\end{itemize}}
-	\begin{itemize}
-		\item 
+		\item Kanały
 	\end{itemize}
+}
 
-
-\frame{
-	\frametitle{Ethercat}	
+\frame{\frametitle{IPv4}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{ip4}
+		\caption{Ramka protokołu
+			\cite{image:ip4}}
+		\label{fig:ip4}
+	\end{figure}
+	}
+\frame{\frametitle{UDP i TCP}
+	UDP:
+	\begin{itemize}
+		\item Szybki
+		\item Brak potwierdzenia odbioru
+		\item CRC
+	\end{itemize}
+	TCP:
+	\begin{itemize}
+		\item Wolniejszy
+		\item Niezawodny
+		\item Algorytm Neagle'a
+		\item Szatkowanie danych
+		\item Niepewność kolejności otrzymania
+	\end{itemize}
 }
 
 \frame{
-	\frametitle{Gigavision}	
+	\frametitle{Modbus}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{modbusramka}
+		\caption{Instrukcje protokołu dla TCP/IP
+			\cite{image:modbus}}
+		\label{fig:modbusramka}
+	\end{figure}	
 }
 
-
-\section{Przykłady praktyczne}
+\frame{
+	\frametitle{Ethercat}
+	\begin{itemize}
+		\item Wykorzystuje np. 100BASE-Tx
+		\item Standardem są prędkości magistrali rzędu kilku kH 
+		\item jitter < 1 us
+		\item Dowolna topologia (najpopularniejsza szeregowa)
+		\item Jeden master
+		\item Węzły slave to wyspecjalizowane urządzenia
+		\item W każdym cyklu master inicjuje przesyłanie ramki przechodzącej przez wszystkie węzły
+		\item Ciągła synchronizacja czasu
+		\item PDO synchroniczne i asynchroniczne
+		\item Broadcast
+		\item CoE, EoE, SoE, ...
+	\end{itemize}
+}
 
 \frame{
 	\frametitle{Serwonapęd}
@@ -625,11 +675,21 @@
 	\frametitle{IRp-6}
 }
 
-\frame{
-	\frametitle{Velma}	
-}
-
 \frame{\frametitle{Za chwilę dalszy ciąg programu}
+	\begin{itemize}
+		\item Bezpieczeństwo
+		\item ROS
+		\item MQTT
+		\item ZeroMQ
+		\item Hyper Transport
+		\item Dokumentacja płyt głównych
+		\item Gigavision
+		\item Wireless Sensor Network
+		\item NFC
+		\item Telekomunikacja
+		\item Optoelektronika
+		\item RTOS
+	\end{itemize}
 }
 
 \frame{
