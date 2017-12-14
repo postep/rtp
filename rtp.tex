@@ -130,14 +130,14 @@
 }
 
 \frame{
-	\frametitle{Wzmacniacz operacyjny}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\linewidth]{wzmacniacz}
-		\caption{Symbol wzmacniacza operacyjnego
-			\cite{image:wzmacniacz}}
-		\label{fig:wzmacniacz}
-	\end{figure}
+	\frametitle{Elektronika}
+	\begin{itemize}
+		\item Wzmacniacze
+		\item Komparatory
+		\item Transformatory
+		\item A/C
+		\item C/A
+	\end{itemize}
 }
 
 \frame{
@@ -455,13 +455,20 @@
 		\item $[2.3 - 5.5]$ V
 		\item max. pojemność szyny: 400pF (kilka metrów)
 		\item Pull-upy
-		\item W praktyce najczęściej jeden master
 		\item Wstrzymywanie zegara
 	\end{itemize}
 	\begin{itemize}
 		\item \textbf{SDA}: Dane
 		\item \textbf{SCL}: Zegar
 	\end{itemize}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{i2cclock}
+		\caption{Listing szyny
+			\cite{image:i2c}}
+		\label{fig:i2cclock}
+	\end{figure}
 }
 
 
@@ -484,10 +491,9 @@
 	\end{itemize}
 	\begin{itemize}
 		\item v2.0 -> 480Mbit/s; 500 mA
-		\item v3.1 Gen 2 -> 10Gbit/s; 900 mA 
+		\item v3.1 Gen 2 -> 20Gbit/s; 900 mA 
 		\item USB-C; 3 A
-		\item Power Delivery USB; moc do 140 W
-		\item OMTP/GSMA
+		\item OMTP/GSMA; 1.5 A
 		\item Pojedynczy host odpytuje wszystkie urządzenia cyklicznie
 	\end{itemize}
 	
@@ -534,7 +540,7 @@
 		\item 1000BASE-T -> 1 Gbit/s
 		\item Topologia gwiazdy - sieć działa w momencie awarii poj. węzła
 		\item CSMA/CD -> sygnał JAM
-		\item Line Pulse (16 ms)
+		\item Line Pulse (1/f = 16 ms)
 		\item Transformatory 1:1 (serparacja poziomu odniesienia)
 		\item Switche
 		\item Power over Ethernet -> do 60 V; do 400 mA
@@ -649,7 +655,7 @@
 	\frametitle{Ethercat}
 	\begin{itemize}
 		\item Wykorzystuje np. 100BASE-Tx
-		\item Standardem są prędkości magistrali rzędu kilku kH 
+		\item Prędkości rzędu kilku kH 
 		\item jitter < 1 us
 		\item Dowolna topologia (najpopularniejsza szeregowa)
 		\item Jeden master
@@ -658,21 +664,68 @@
 		\item Ciągła synchronizacja czasu
 		\item PDO synchroniczne i asynchroniczne
 		\item Broadcast
-		\item CoE, EoE, SoE, ...
+		\item CoE, EoE, DS 301, ...
 	\end{itemize}
 }
 
+
+\frame{\frametitle{Serwonapęd}
+	\begin{itemize}
+		\item Ehtercat lub światłowód
+		\item Połączenie z enkoderami (pary różnicowe)
+		\item Stopień mocy
+		\item Wejścia cyfrowe
+		\item Wyjścia cyfrowe
+	\end{itemize}
+	}
+	
 \frame{
-	\frametitle{Serwonapęd}
+	\frametitle{IRp-6}
+		\begin{itemize}
+			\item RTLinux
+			\item Orocos
+			\item ROS
+		\end{itemize}
+		\begin{itemize}
+			\item EtherCAT
+			\item CAN
+			\item RS-485
+			\item Interfejsc A/C i C/A
+		\end{itemize}
 }
 
 \frame{
 	\frametitle{Czujnik siły}
-	
+	\begin{itemize}
+		\item Zasilanie -15 V; +15 V
+		\item Zasilanie 5 V
+		\item Analogowy sygnał opisujący pomiar siły
+		\item Multiplekser wybierający kanał pomiaru
+	\end{itemize}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.6\linewidth]{irp}
+			\caption{Chwytak robota IRp-6}
+			\label{fig:irp6}
+		\end{figure}
 }
 
-\frame{
-	\frametitle{IRp-6}
+\frame{\frametitle{Co zrobiliśmy źle?}
+		\begin{figure}
+			\centering
+			\includegraphics[width=1.1\linewidth]{czujniksily}
+			\caption{Odczyt siły w osi X}
+			\label{fig:czujniksily}
+		\end{figure}
+	}
+	
+\frame{\frametitle{Jak to poprawić?}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.85\linewidth]{daniel}
+		\caption{Dwóch studentów męczących się dopiero trzeci semestr nad pracą inżynierską}
+		\label{fig:daniel}
+	\end{figure}
 }
 
 \frame{\frametitle{Za chwilę dalszy ciąg programu}
@@ -682,21 +735,23 @@
 		\item MQTT
 		\item ZeroMQ
 		\item Hyper Transport
-		\item Dokumentacja płyt głównych
 		\item Gigavision
 		\item Wireless Sensor Network
 		\item NFC
 		\item Telekomunikacja
 		\item Optoelektronika
 		\item RTOS
+		\item Sterowniki urządzeń
 	\end{itemize}
 }
 
-\frame{
-	\frametitle{Bibliografia}
-	\bibliographystyle{plain}
+\begin{frame}[allowframebreaks]
+	
+	\bibliographystyle{apalike}
 	\bibliography{bibliography}
-}
+	
+\end{frame}
+
 
 \frame{\frametitle{Dziękuję za uwagę}
 	\begin{figure}
