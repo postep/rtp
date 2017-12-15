@@ -9,43 +9,38 @@
 
 %\addbibresource{bibliography.bib}
 
-%\setbeamertemplate{bibliography item}{\insertbiblabel}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
 
 
 \graphicspath{ {./images/} }
 
 \begin{document}
-\title{Ryż mydło i powidło}   
+\title{Sieci czasu rzeczywistego}   
 \author{Jakub Arnold Postępski-Winiarski von Seredyński el Pacuszka} 
 \date{\today} 
 
 \frame{\titlepage} 
 
 
-\frame{
 
-	\frametitle{Systemy czasu rzeczywistego}
-	Urządzenie techniczne, którego wynik i efekt działania jest zależny od chwili wypracowania tego wyniku. \cite{wiki:RTC}\\
-	\vspace{1in}
-	Systemy dzielimy na:
+
+\frame{\frametitle{Rozkład jazdy}
 	\begin{itemize}
-		\item Twarde
-		\item Sztywne
-		\item Miękkie
+		\item Wprowadzenie
+		\item Potrzebne narzędzia
+		\item Wybrane implementacje sieci RT
+		\item Praktyczne realizaje
+		\item Podsumowanie
 	\end{itemize}
-}
+	}
 	
 \frame{
-	\frametitle{Budowa ogólna}
-	Budowę można obrazować standardowym modelem ISO/OSI. W praktycznych realizacjach część z warstw jest mniej istotna	\begin{itemize}
-		\item Fizyczne urządzenia i magistrale
-		\item Algorytmy transportu danych
-		\item Sterownik systemu operacyjnego
-		\item Aplikacja
-	\end{itemize}
+	
+	\frametitle{Definicje}
+	\textbf{Systemy czasu rzeczywistego} - 	Urządzenie techniczne, którego wynik i efekt działania jest zależny od chwili wypracowania tego wyniku. \cite{wiki:RTC}\\
+	\textbf{Przepustowość} - In computing, bandwidth is the bit-rate of available or consumed information capacity expressed typically in metric multiples of bits per second. Variously, bandwidth may be characterized as network bandwidth, data bandwidth, or digital bandwidth. \cite{wiki:Przepustowosc}
+	
 }
-
-
 
 \frame{
 	\frametitle{Co chcemy uzyskać? - Sieci telekomunikacyjne}
@@ -54,24 +49,15 @@
 		\item Kontrola systemów infrastruktury
 		\item Automotive
 		\item Medycyna
-		\item Wojskowość
-		\item Petrochemia
+		\item Wojsko
+		\item Przemysł
 		\item Energetyka
 		\item Robotyka
 	\end{itemize}
 }
 
-\frame{
-	\frametitle{Co chcemy łączyć? - Urządzenia}
-		\begin{figure}
-			\centering
-			\includegraphics[width=0.99\linewidth,page=2]{motherboard}
-			\caption{Schemat ideowy płyty głównej laptopa \cite{image:motherboard}}
-			\label{fig:motherboard}
-		\end{figure}
-	}
 
-\frame{\frametitle{Przykłady urządzeń}
+\frame{\frametitle{Co chcemy łączyć? - Urządzenia}
 	\begin{itemize}
 		\item Linux z patchem RT
 		\item BeagleBone
@@ -80,24 +66,72 @@
 		\item PLC
 		\item FPGA
 	\end{itemize}
+}
+
+
+
+\frame{
+	\frametitle{Przykład urządzenia}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.99\linewidth,page=2]{motherboard}
+			\caption{Schemat ideowy płyty głównej laptopa \cite{image:motherboard}}
+			\label{fig:motherboard}
+		\end{figure}
 	}
+
+
 \frame{
 	\frametitle{Rodzaje łącz}
 	\begin{itemize}
-		\item Przewodowe
 		\item Bezprzewodowe
+		\item Przewodowe
 		\item Światłowodowe
+	\end{itemize}
+	\begin{itemize}
+		\item Szeregowe
+		\item Równoległe
 	\end{itemize}
 	\begin{itemize}
 		\item Analogowe
 		\item Cyfrowe
 		\item Ze zwielokrotnieniem falowym
 	\end{itemize}
+}
+
+\frame{
+	\frametitle{Problemy z automatycznymi gołąbkami}
 	\begin{itemize}
-		\item Szeregowe
-		\item Równoległe
+		\item Half duplex
+		\item Full duplex
+	\end{itemize}
+	
+	\begin{itemize}
+		\item Jeden master
+		\item Wiele masterów
+		\item Wykrywanie kolizji
+		\item Tokeny
+		\item Synchronizacja czasu
+		\item Enkapsulacja
+		\item Kompresja
+		\item Korekcja błędów
+		\item Zakłócenia elektromagnetyczne
+		\item Ilość węzłów w sieci
+		\item Skończona prędkość rozchodzenia fali
 	\end{itemize}
 }
+
+\frame{
+	\frametitle{Elektronika}
+	\begin{itemize}
+		\item $\micro$C
+		\item Wzmacniacze
+		\item Komparatory
+		\item Transformatory
+		\item A/C
+	\end{itemize}
+}
+
 
 \frame{
 	\frametitle{Otwarty kolektor/dren}
@@ -127,17 +161,6 @@
 		\caption{Przykładowa realizacja pary różnicowej na PCB\cite{image:collector}}
 		\label{fig:differential}
 	\end{figure}
-}
-
-\frame{
-	\frametitle{Elektronika}
-	\begin{itemize}
-		\item Wzmacniacze
-		\item Komparatory
-		\item Transformatory
-		\item A/C
-		\item C/A
-	\end{itemize}
 }
 
 \frame{
@@ -200,64 +223,23 @@
 
 \frame{
 	\frametitle{Światłowody}
-	
-	
 	\begin{itemize}
-		\item Prędkości nawet rzędu Tb/s
+		\item Prędkości nawet rzędu Tbit/s
 		\item Małe tłumienie - duże odległości
 		\item Brak problemów elektromagnetycznych (także bezpieczeństwo)
+		\item LED lub laser (klasa 1 - bezpieczny; klasa 4 - poparzenia i pożary)
 		\item Problemy z fizycznymi połączeniami
 		\item Wrażliwość na uszkodzenia
 		\item Koszt wykonania
 	\end{itemize}
-	
-	Lasery klasy pierwszej są bezpieczne. Lasery klasy czwartej mogą powodować choroby oczu, oparzenia i pożar.
 }
-
-
-
-
-\frame{
-	\frametitle{Przepustowość}
-	In computing, bandwidth is the bit-rate of available or consumed information capacity expressed typically in metric multiples of bits per second. Variously, bandwidth may be characterized as network bandwidth, data bandwidth, or digital bandwidth. \cite{wiki:Przepustowosc}
-	\\Zależy od jakości ośrodka, w tym:
-	\begin{itemize}
-		\item Fizycznej realizacji
-		\item Algorytmów kompresji
-		\item Algorytmów korekcji błędów
-		\item (Ilości węzłów w sieci)
-	\end{itemize}
-}
-
-
-
-
-\frame{
-	\frametitle{Problemy z naszym automatycznym gołąbkiem}
-	\begin{itemize}
-		\item Half duplex
-		\item Full duplex
-	\end{itemize}
-	
-	\begin{itemize}
-		\item Jeden master
-		\item Wiele masterów
-		\item Wykrywanie kolizji
-		\item Tokeny
-		\item Synchronizacja czasu
-		\item Enkapsulacja
-		\item Kompresja
-		\item Korekcja błędów
-		\item Zakłócenia elektromagnetyczne
-	\end{itemize}
-}
-
 
 \frame{
 	\frametitle{RS-232}
 	\begin{itemize}
 		\item 2 urządzenia
 		\item 15 m
+		\item Wystarczą 3 przewody
 		\item Wybrane prędkości: 50, 9600, 115200, 921600 bit/s 
 		\item Tryb asynchroniczny
 		\item Tryb synchroniczny
@@ -347,20 +329,19 @@
 	\end{figure}	
 }
 
-
-
-
 \frame{
 	\frametitle{CAN}
 	Stworzona dla automotiwu, ale stosowana szerzej. Niezawodna jak PKiN.
 	\begin{itemize}
 		\item 40 m
-		\item 1 Mb/s
+		\item 1 Mbit/s
 		\item Równolegle połączona para różnicowa
 		\item Specjalne przewody
 		\item Rezystory terminalne 120 Ohm
 		\item 11 bitowy identyfikator w wersji 2.0A
 		\item Multimaster, adresy determinują priorytet
+		\item Pull-upy
+		\item Zero dominujące
 		\item Synchronizacja zegarów (time quanta)
 		\item Bit stuffing
 		\item Filtrowanie wiadomości
@@ -382,21 +363,20 @@
 	\begin{itemize}
 		\item Model serwer - klient
 		\item Logiczne połączenie 1:1
-		\item Narzut protokołu
 		\item Możliwość przesyłania danych dowolnego rozmiaru
 		\item Konieczność odpowiedzi serwera (może to być błąd)
-		\item Przesyłanie w dowolnym kierunku
+		\item Narzut protokołu
 	\end{itemize}
 	PDO - Process Data Object:
 	\begin{itemize}
 		\item Model producent - konsument
 		\item Logiczne połączenie 1:n
-		\item Brak narzutu protokołu
 		\item Dane długości 8 bajtów
 		\item Max. 512 PDO na jedno urządzenie
 		\item Wyzwalane zdarzeniem (asynchroniczne)
 		\item Wyzwalane wiadomością typu SYNC (synchroniczne)
 		\item TxPDO mapping i RxPDO mapping
+		\item Mały narzutu protokołu
 	\end{itemize}
 }
 \frame{
@@ -472,16 +452,6 @@
 }
 
 
-\frame{\frametitle{I$^2$C}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\linewidth]{i2c}
-		\caption{Ramka szyny I2C
-			\cite{image:i2c}}
-		\label{fig:i2c}
-	\end{figure}	
-	}
-
 \frame{
 	\frametitle{USB}
 	Stosowana do połączeń Plug and Play urządzeń zewnętrznych komputera.
@@ -491,7 +461,7 @@
 	\end{itemize}
 	\begin{itemize}
 		\item v2.0 -> 480Mbit/s; 500 mA
-		\item v3.1 Gen 2 -> 20Gbit/s; 900 mA 
+		\item v3.2 -> 20Gbit/s; 900 mA 
 		\item USB-C; 3 A
 		\item OMTP/GSMA; 1.5 A
 		\item Pojedynczy host odpytuje wszystkie urządzenia cyklicznie
@@ -508,7 +478,7 @@
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.9\linewidth]{usb3pinout}
-		\caption{Złącza USB
+		\caption{Złącze USB v3 typ A
 			\cite{image:usbpinout}}
 		\label{fig:usb3pinout}
 	\end{figure}
@@ -533,32 +503,56 @@
 	}
 
 \frame{
-	\frametitle{Ethernet - kable miedziane}
+	\frametitle{100BASE-TX}
 	\begin{itemize}
 		\item 100 m
-		\item 100BASE-TX -> 100 Mbit/s
-		\item 1000BASE-T -> 1 Gbit/s
-		\item Topologia gwiazdy - sieć działa w momencie awarii poj. węzła
+		\item 100 Mbit/s
+		\item Dwie pary różnicowe (cztery przewody nieużywane)
+		\item Topologia gwiazdy (switche)
 		\item CSMA/CD -> sygnał JAM
-		\item Line Pulse (1/f = 16 ms)
-		\item Transformatory 1:1 (serparacja poziomu odniesienia)
-		\item Switche
+		\item Transformatory 1:1 (separacja poziomu odniesienia)
 		\item Power over Ethernet -> do 60 V; do 400 mA
 	\end{itemize}
 }
+\frame{\frametitle{10GBASE-T}
+	\begin{itemize}
+		\item F = 500MHz
+		\item Przesunięte pary różnicowe
+		\item Separacja par różnicowych
+		\item Kable kat. 6 (55 m) oraz 6a (100 m)
+	\end{itemize}
+	
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{ethernet6}
+		\caption{Kabel skrętkowy kat. 6
+			\cite{ethernet}}
+		\label{fig:ethernet6}
+	\end{figure}
+}
+
+\frame{\frametitle{Ethernet}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{ethernetzlacza}
+		\caption{Wtyki RJ-45
+			\cite{ethernet}}
+		\label{fig:ethernetzlacza}
+	\end{figure}
+}
 
 \frame{
-	\frametitle{Ethernet - kable miedziane}
+	\frametitle{100BASE-Tx}
 		\begin{figure}
 			\centering
 			\includegraphics[width=0.9\linewidth]{ethernetflow}
-			\caption{Przepływ bitów w karcie sieciowej
+			\caption{Przepływ danych w karcie sieciowej
 				\cite{ethernet}}
 			\label{fig:ethernetflow}
 		\end{figure}
 }
 \frame{
-	\frametitle{Ethernet - kable miedziane}
+	\frametitle{100BASE-Tx}
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.5\linewidth]{nrzi}
@@ -570,43 +564,18 @@
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.5\linewidth]{mlt3}
-		\caption{Kod NRZI
+		\caption{Kod MLT-3
 			\cite{image:mlt3}}
 		\label{fig:mlt3}
-	\end{figure}
-}
-\frame{\frametitle{10GBASE-T}
-	\begin{itemize}
-		\item F = 500MHz
-		\item Przesunięte pary różnicowe
-		\item Separacja par różnicowych
-		\item Kable kat. 6 (55 m) oraz 6a (100 m)
-	\end{itemize}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\linewidth]{ethernet6}
-		\caption{Kabel skrętkowy kat. 6
-			\cite{ethernet}}
-		\label{fig:ethernet6}
-	\end{figure}
-	}
-	
-\frame{\frametitle{Ethernet - kable miedziane}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\linewidth]{ethernetzlacza}
-		\caption{Wtyki RJ-45
-			\cite{ethernet}}
-		\label{fig:ethernetzlacza}
 	\end{figure}
 }
 
 
 \frame{\frametitle{WiFi}
 	\begin{itemize}
-		\item B, G, N, AC
 		\item ok. 100-200 m
 		\item 2,4 GHz lub 5,8 GHz
+		\item B, G, N, AC
 		\item (Half-duplex)
 		\item Nie wszystkie urządzenia się widzą
 		\item CSMA/CA -> synał próbny
@@ -614,15 +583,7 @@
 	\end{itemize}
 }
 
-\frame{\frametitle{IPv4}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.9\linewidth]{ip4}
-		\caption{Ramka protokołu
-			\cite{image:ip4}}
-		\label{fig:ip4}
-	\end{figure}
-	}
+
 \frame{\frametitle{UDP i TCP}
 	UDP:
 	\begin{itemize}
@@ -641,7 +602,7 @@
 }
 
 \frame{
-	\frametitle{Modbus}
+	\frametitle{Modbus TCP/IP}
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.9\linewidth]{modbusramka}
@@ -656,10 +617,10 @@
 	\begin{itemize}
 		\item Wykorzystuje np. 100BASE-Tx
 		\item Prędkości rzędu kilku kH 
-		\item jitter < 1 us
-		\item Dowolna topologia (najpopularniejsza szeregowa)
 		\item Jeden master
 		\item Węzły slave to wyspecjalizowane urządzenia
+		\item Jitter < 1 us
+		\item Dowolna topologia (najpopularniejsza szeregowa)
 		\item W każdym cyklu master inicjuje przesyłanie ramki przechodzącej przez wszystkie węzły
 		\item Ciągła synchronizacja czasu
 		\item PDO synchroniczne i asynchroniczne
@@ -677,8 +638,24 @@
 		\item Wejścia cyfrowe
 		\item Wyjścia cyfrowe
 	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{elmo}
+		\caption{Serwonapędy i silniki}
+		\label{fig:elmo}
+	\end{figure}	
+	
 	}
 	
+\frame{	
+	\frametitle{IRp-6}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{irpcaly}
+		\caption{Robot IRp-6}
+		\label{fig:irpcaly}
+	\end{figure}	
+	}
 \frame{
 	\frametitle{IRp-6}
 		\begin{itemize}
@@ -691,6 +668,7 @@
 			\item CAN
 			\item RS-485
 			\item Interfejsc A/C i C/A
+			\item Szyny zasilające
 		\end{itemize}
 }
 
@@ -723,35 +701,29 @@
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.85\linewidth]{daniel}
-		\caption{Dwóch studentów męczących się dopiero trzeci semestr nad pracą inżynierską}
+		\caption{Dwóch studentów męczących się dopiero drugi semestr z pracą inżynierską. Zdjęcie poglądowe.}
 		\label{fig:daniel}
 	\end{figure}
 }
 
 \frame{\frametitle{Za chwilę dalszy ciąg programu}
 	\begin{itemize}
-		\item Bezpieczeństwo
-		\item ROS
-		\item MQTT
-		\item ZeroMQ
 		\item Hyper Transport
 		\item Gigavision
-		\item Wireless Sensor Network
 		\item NFC
+		\item Wireless Sensor Network
 		\item Telekomunikacja
-		\item Optoelektronika
 		\item RTOS
 		\item Sterowniki urządzeń
+		\item Bezpieczeństwo
+		\item ROS
 	\end{itemize}
 }
 
-\frame{
-	
-	\bibliographystyle{plain}
-	\bibliography{bibliography}
-	
-}
-
+\begin{frame}[allowframebreaks]{Bibliografia}
+\bibliographystyle{plain}
+\bibliography{bibliography}
+\end{frame}
 
 \frame{\frametitle{Dziękuję za uwagę}
 	\begin{figure}
